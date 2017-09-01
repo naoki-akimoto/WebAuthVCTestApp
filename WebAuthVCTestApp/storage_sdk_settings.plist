@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>reserved_provider1</key>
+	<string>(please enter)</string>
+	<key>kiiappsBaseUrl</key>
+	<string>https://x7m89qiatckm.development-jp.internal.kiiapps.com/api</string>
+	<key>http_auth_username</key>
+	<string>(please enter)</string>
+	<key>http_auth_password</key>
+	<string>(please enter)</string>
+</dict>
+</plist>
