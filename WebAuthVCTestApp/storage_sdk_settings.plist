@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>reserved_provider1</key>
-	<string>(please enter)</string>
+	<string>googleplus</string>
 	<key>kiiappsBaseUrl</key>
-	<string>https://x7m89qiatckm.development-jp.internal.kiiapps.com/api</string>
+	<string>https://52204681.development-jp.internal.kiiapps.com/api</string>
 	<key>http_auth_username</key>
 	<string>(please enter)</string>
 	<key>http_auth_password</key>

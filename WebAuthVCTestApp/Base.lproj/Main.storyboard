@@ -37,6 +37,14 @@
                                     <action selector="openDialogWithAlertControllerClickedWith_sendor:" destination="BYZ-38-t0r" eventType="touchDown" id="0Bk-Vy-Sj3"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Q0-L8-ylh">
+                                <rect key="frame" x="16" y="370" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Open Custom Dialog"/>
+                                <connections>
+                                    <segue destination="9ZB-7b-ykX" kind="presentation" modalTransitionStyle="crossDissolve" id="xBF-Um-Kvc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -44,6 +52,57 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="132.68365817091455"/>
+        </scene>
+        <!--Modal View Controller-->
+        <scene sceneID="6o2-0X-6bn">
+            <objects>
+                <viewController modalPresentationStyle="overCurrentContext" id="9ZB-7b-ykX" userLabel="Modal View Controller" customClass="ModalViewController" customModule="WebAuthVCTestApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="B98-Io-HUb"/>
+                        <viewControllerLayoutGuide type="bottom" id="fWv-Wn-FdX"/>
+                    </layoutGuides>
+                    <view key="view" tag="1" contentMode="scaleToFill" id="A4K-kb-xiV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view tag="2" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JSb-JR-q9u">
+                                <rect key="frame" x="104" y="209" width="167" height="249"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rsc-Ql-cJA">
+                                        <rect key="frame" x="8" y="109" width="151" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="KiiUser"/>
+                                        <connections>
+                                            <action selector="loginKiiUserClickedWith_sendor:" destination="9ZB-7b-ykX" eventType="touchDown" id="FKo-Fu-Vgm"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zCv-kJ-sTN">
+                                        <rect key="frame" x="8" y="71" width="151" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="KiiSocialConnect"/>
+                                        <connections>
+                                            <action selector="loginKiiSocialConnectClickedWith_sendor:" destination="9ZB-7b-ykX" eventType="touchDown" id="goo-yC-0U5"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kn6-1w-2eB">
+                                        <rect key="frame" x="8" y="147" width="151" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="New one"/>
+                                        <connections>
+                                            <action selector="loginNewOneClickedWith_sendor:" destination="9ZB-7b-ykX" eventType="touchDown" id="NWS-Vx-QxP"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.80873123263926783" blue="0.31085827538860988" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lma-zt-j9y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1012" y="132.68365817091455"/>
         </scene>
     </scenes>
 </document>
