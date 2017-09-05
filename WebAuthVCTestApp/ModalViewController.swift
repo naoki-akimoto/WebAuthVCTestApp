@@ -50,7 +50,8 @@ class ModalViewController: UIViewController {
         let vc = KiiUser.login(withWebAuthViewController: KiiReservedProvider1.provider(), block: {
             (user, error) in
         })
-        self.addChildViewController(vc)
-        //self.present(vc, animated: true, completion: nil)
+        //self.addChildViewController(vc)
+        self.present(vc, animated: true, completion: {
+        })
     }
 }

@@ -81,9 +81,6 @@ class ViewController: UIViewController, UIAlertViewDelegate {
                 (user, error) in
             })
             //self.addChildViewController(vc)
-            vc.modalTransitionStyle = .crossDissolve
-            vc.modalPresentationStyle = .overCurrentContext
-            vc.isModalInPopover = true
             self.present(vc, animated: true, completion: nil)
             break;
         default:
