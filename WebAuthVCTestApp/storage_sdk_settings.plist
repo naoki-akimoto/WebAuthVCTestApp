@@ -3,12 +3,8 @@
 <plist version="1.0">
 <dict>
 	<key>reserved_provider1</key>
-	<string>googleplus</string>
+	<string>twitter</string>
 	<key>kiiappsBaseUrl</key>
-	<string>https://52204681.development-jp.internal.kiiapps.com/api</string>
-	<key>http_auth_username</key>
-	<string>(please enter)</string>
-	<key>http_auth_password</key>
-	<string>(please enter)</string>
+	<string>https://94be5059.development-jp.internal.kiiapps.com/api</string>
 </dict>
 </plist>

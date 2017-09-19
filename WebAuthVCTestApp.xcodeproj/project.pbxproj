@@ -16,7 +16,18 @@
 		221A3E6F1F56B6890029F058 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 221A3E6E1F56B6890029F058 /* Assets.xcassets */; };
 		221A3E721F56B6890029F058 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 221A3E701F56B6890029F058 /* LaunchScreen.storyboard */; };
 		221A3E7C1F56B79E0029F058 /* KiiSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 221A3E7B1F56B79E0029F058 /* KiiSDK.framework */; };
+		227883761F6243460095D35E /* WebAuthVCUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227883751F6243460095D35E /* WebAuthVCUITests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		227883781F6243470095D35E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 221A3E5C1F56B6890029F058 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 221A3E631F56B6890029F058;
+			remoteInfo = WebAuthVCTestApp;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		220B15041F591725003C285F /* Embed Frameworks */ = {
@@ -43,6 +54,9 @@
 		221A3E711F56B6890029F058 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		221A3E731F56B6890029F058 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		221A3E7B1F56B79E0029F058 /* KiiSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KiiSDK.framework; path = WebAuthVCTestApp/KiiSDK.framework; sourceTree = "<group>"; };
+		227883731F6243460095D35E /* WebAuthVCUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WebAuthVCUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		227883751F6243460095D35E /* WebAuthVCUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAuthVCUITests.swift; sourceTree = "<group>"; };
+		227883771F6243460095D35E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +68,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		227883701F6243460095D35E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -62,6 +83,7 @@
 			children = (
 				221A3E7B1F56B79E0029F058 /* KiiSDK.framework */,
 				221A3E661F56B6890029F058 /* WebAuthVCTestApp */,
+				227883741F6243460095D35E /* WebAuthVCUITests */,
 				221A3E651F56B6890029F058 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -70,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				221A3E641F56B6890029F058 /* WebAuthVCTestApp.app */,
+				227883731F6243460095D35E /* WebAuthVCUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -87,6 +110,15 @@
 				220C22CA1F5D047B0002252D /* ModalViewController.swift */,
 			);
 			path = WebAuthVCTestApp;
+			sourceTree = "<group>";
+		};
+		227883741F6243460095D35E /* WebAuthVCUITests */ = {
+			isa = PBXGroup;
+			children = (
+				227883751F6243460095D35E /* WebAuthVCUITests.swift */,
+				227883771F6243460095D35E /* Info.plist */,
+			);
+			path = WebAuthVCUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -110,6 +142,24 @@
 			productReference = 221A3E641F56B6890029F058 /* WebAuthVCTestApp.app */;
 			productType = "com.apple.product-type.application";
 		};
+		227883721F6243460095D35E /* WebAuthVCUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2278837C1F6243470095D35E /* Build configuration list for PBXNativeTarget "WebAuthVCUITests" */;
+			buildPhases = (
+				2278836F1F6243460095D35E /* Sources */,
+				227883701F6243460095D35E /* Frameworks */,
+				227883711F6243460095D35E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				227883791F6243470095D35E /* PBXTargetDependency */,
+			);
+			name = WebAuthVCUITests;
+			productName = WebAuthVCUITests;
+			productReference = 227883731F6243460095D35E /* WebAuthVCUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -122,6 +172,11 @@
 					221A3E631F56B6890029F058 = {
 						CreatedOnToolsVersion = 8.3.3;
 						ProvisioningStyle = Automatic;
+					};
+					227883721F6243460095D35E = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 221A3E631F56B6890029F058;
 					};
 				};
 			};
@@ -139,6 +194,7 @@
 			projectRoot = "";
 			targets = (
 				221A3E631F56B6890029F058 /* WebAuthVCTestApp */,
+				227883721F6243460095D35E /* WebAuthVCUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -155,6 +211,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		227883711F6243460095D35E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -168,7 +231,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2278836F1F6243460095D35E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				227883761F6243460095D35E /* WebAuthVCUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		227883791F6243470095D35E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 221A3E631F56B6890029F058 /* WebAuthVCTestApp */;
+			targetProxy = 227883781F6243470095D35E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		221A3E6B1F56B6890029F058 /* Main.storyboard */ = {
@@ -317,6 +396,30 @@
 			};
 			name = Release;
 		};
+		2278837A1F6243470095D35E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = WebAuthVCUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kii.sample.WebAuthVCUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = WebAuthVCTestApp;
+			};
+			name = Debug;
+		};
+		2278837B1F6243470095D35E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = WebAuthVCUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kii.sample.WebAuthVCUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = WebAuthVCTestApp;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -337,6 +440,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		2278837C1F6243470095D35E /* Build configuration list for PBXNativeTarget "WebAuthVCUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2278837A1F6243470095D35E /* Debug */,
+				2278837B1F6243470095D35E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

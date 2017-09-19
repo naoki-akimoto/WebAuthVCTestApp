@@ -1967,13 +1967,31 @@ NS_ASSUME_NONNULL_BEGIN
  If successful, the user is cached inside SDK as current user and accessible
  via <[KiiUser currentUser]>.
 
- @param provider Identity provider that support token integration.
+ @param provider Identity provider that support web auth integration.
  @param block The block to be called upon method completion. Must not
  be nil. See example.
  */
 + (void) loginWithWebAuth:(KiiWebAuthProvider*) provider block:(KiiUserBlock)block;
 
-+ (UIViewController*) loginWithWebAuthViewController:(KiiWebAuthProvider*) provider block:(KiiUserBlock)block;
+/**  Get UIViewController for authenticate using webauth provider.
+
+     UIViewController *vc = [KiiUser loginWithWebAuthViewController:[KiiOpenIDConnect provider]
+                                                              block:^(KiiUser *user, NSError *error) {
+         if(error == nil) {
+             NSLog(@"Authenticated user: %@", user);
+         }
+     }];
+     [{instance of top view controller} presentViewController:vc animated:YES completion:nil];
+
+ If successful, the user is cached inside SDK as current user and accessible
+ via <[KiiUser currentUser]>.
+
+ @param provider Identity provider that support web auth integration.
+ @param block The block to be called upon method completion. Must not
+ be nil. See example.
+ @return view controller of web auth, no return nil. Please present view controller yourself.
+ */
++ (UIViewController*) webAuthLoginViewController:(KiiWebAuthProvider*) provider block:(KiiUserBlock)block;
 
 /** Link logged user with Identity provider through token integration. This is blocking method
 
@@ -1981,7 +1999,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param credential valid credential according to Identity provider.
  @return true if link is succeeded, false otherwise.
  */
-- (BOOL) linkWithProviderSynchronous:(KiiTokenProvider *)provider credential:(nonnull NSObject<KiiCredential> *) credential error:(NSError *__autoreleasing  _Nullable *)error;
+- (BOOL) linkWithProviderSynchronous:(KiiTokenProvider *)provider credential:(NSObject<KiiCredential> *) credential error:(NSError *__autoreleasing  _Nullable *)error;
 
 /** Link logged user with Identity provider through token integration. This is non-blocking method
 
@@ -1999,7 +2017,7 @@ NS_ASSUME_NONNULL_BEGIN
  be nil. See example.
  @exception NSInvalidArgumentException if block is nil.
  */
-- (void) linkWithProvider:(KiiTokenProvider *)provider credential:(nonnull NSObject<KiiCredential> *) credential block:(KiiUserBlock)block;
+- (void) linkWithProvider:(KiiTokenProvider *)provider credential:(NSObject<KiiCredential> *) credential block:(KiiUserBlock)block;
 
 
 
@@ -2009,7 +2027,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param error used to return an error by reference (pass nil if this is not desired). It is recommended to set an actual error object to get the error information.
  @return true if unlink is succeeded, false otherwise.
  */
-- (BOOL) unlinkSynchronous:(nonnull KiiTokenProvider *)provider error:(NSError *__autoreleasing  _Nullable *)error;
+- (BOOL) unlinkSynchronous:(KiiTokenProvider *)provider error:(NSError *__autoreleasing  _Nullable *)error;
 
 /** Unlink current logged user from linked Identity provider. This is blocking method
 
@@ -2023,7 +2041,7 @@ NS_ASSUME_NONNULL_BEGIN
 @param provider Identity provider that support token integration
 @param block The block to be called upon method completion. Must not
  */
-- (void) unlink:(nonnull KiiTokenProvider *)provider block:(KiiUserBlock)block;
+- (void) unlink:(KiiTokenProvider *)provider block:(KiiUserBlock)block;
 
 /** Get Dictionary of linked providers
  @return Dictionary of linked providers

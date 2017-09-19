@@ -11,6 +11,8 @@ import KiiSDK
 
 class ViewController: UIViewController, UIAlertViewDelegate {
 
+    @IBOutlet var label: UILabel?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -31,18 +33,33 @@ class ViewController: UIViewController, UIAlertViewDelegate {
             action in
             KiiSocialConnect.log(in: .Reserved1, options: nil, block: {
                 (user, provider, error) in
+                if (error != nil) {
+                    self.set(result: "KiiSocialConnect.login failed.")
+                } else {
+                    self.set(result: "KiiSocialConnect.login succeeded.")
+                }
             })
         })
         alertC.addAction(UIAlertAction(title: "KiiUser.loginWithWebAuth", style: .default) {
             action in
             KiiUser.login(withWebAuth: KiiReservedProvider1.provider(), block: {
                     (user, error) in
+                if (error != nil) {
+                    self.set(result: "KiiUser.loginWithWebAuth failed.")
+                } else {
+                    self.set(result: "KiiUser.loginWithWebAuth succeeded.")
+                }
             })
         })
         alertC.addAction(UIAlertAction(title: "new one", style: .default) {
             action in
-            let vc = KiiUser.login(withWebAuthViewController: KiiReservedProvider1.provider(), block: {
+            let vc = KiiUser.webAuthLoginViewController(KiiReservedProvider1.provider(), block: {
                 (user, error) in
+                if (error != nil) {
+                    self.set(result: "new one failed.")
+                } else {
+                    self.set(result: "new one succeeded.")
+                }
             })
             //self.addChildViewController(vc)
             vc.modalTransitionStyle = .crossDissolve
@@ -69,22 +86,49 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         case 0:
             KiiSocialConnect.log(in: .Reserved1, options: nil, block: {
                 (user, provider, error) in
+                if (error != nil) {
+                    self.set(result: "KiiSocialConnect.login failed.")
+                } else {
+                    self.set(result: "KiiSocialConnect.login succeeded.")
+                }
             })
             break;
         case 1:
             KiiUser.login(withWebAuth: KiiReservedProvider1.provider(), block: {
                 (user, error) in
+                if (error != nil) {
+                    self.set(result: "KiiUser.loginWithWebAuth failed.")
+                } else {
+                    self.set(result: "KiiUser.loginWithWebAuth succeeded.")
+                }
             })
             break;
         case 2:
-            let vc = KiiUser.login(withWebAuthViewController: KiiReservedProvider1.provider(), block: {
+            let vc = KiiUser.webAuthLoginViewController(KiiReservedProvider1.provider(), block: {
                 (user, error) in
+                if (error != nil) {
+                    self.set(result: "new one failed.")
+                } else {
+                    self.set(result: "new one succeeded.")
+                }
             })
-            //self.addChildViewController(vc)
             self.present(vc, animated: true, completion: nil)
             break;
         default:
             break;
+        }
+    }
+
+    func set(result:String) {
+        NSLog(result)
+        label?.text = result
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let controller = segue.destination as! ModalViewController
+
+        controller.resultHandler = { result in
+            self.set(result: result)
         }
     }
 }

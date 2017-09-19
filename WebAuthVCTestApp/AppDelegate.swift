@@ -17,9 +17,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        /*
         Kii.begin(withID: "52204681",
                   andKey: "6eb744eab40de1bc25689e6f11be27c4",
                   andCustomURL: "https://api-development-jp.internal.kii.com/api")
+         */
+        Kii.begin(withID: "94be5059",
+                  andKey: "57b1a80340beec1bdcbdc83e43f76f7f",
+                  andCustomURL: "https://api-development-jp.internal.kii.com/api")
+        /*
+        Kii.begin(withID: "1jeux2s0szog",
+                  andKey: "a130c8f4b9d445cfa2f43583260248b4",
+                  andSite: .JP)
+ */
 
         Kii.setAccessTokenExpiration(1800)
         Kii.setLogLevel(3)
