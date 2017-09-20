@@ -35,8 +35,8 @@ class WebAuthVCUITests: XCTestCase {
         
         let app = XCUIApplication()
         app.buttons["Open Custom Dialog"].tap()
-        app.buttons["New one"].tap()
-        
+        app.buttons["KiiUser.webAuthLoginVC"].tap()
+
         let webViewsQuery = app.webViews
         XCTAssertNotNil(webViewsQuery.textViews["Authorize SPTST to use yout account?"])
         webViewsQuery.textFields["Username or email"].tap()
@@ -44,6 +44,7 @@ class WebAuthVCUITests: XCTestCase {
         webViewsQuery.secureTextFields["Password"].tap()
         app.typeText(TEST_PASSWORD)
         webViewsQuery.buttons["Authorize app"].tap()
+
     }
     
 }

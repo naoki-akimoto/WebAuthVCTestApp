@@ -61,9 +61,9 @@ class ModalViewController: UIViewController {
             (user, error) in
             var msg: String
             if (error != nil) {
-                msg = "webAuthLogin failed: " + error!.localizedDescription
+                msg = "KiiUser.webAuthLoginViewController failed: " + error!.localizedDescription
             } else {
-                msg = "webAuthLogin succeeded: " + user!.userID!
+                msg = "KiiUser.webAuthLoginViewController succeeded: " + user!.userID!
             }
             if let handler = self.resultHandler {
                 handler(msg)

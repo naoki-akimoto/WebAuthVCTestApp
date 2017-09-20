@@ -34,9 +34,9 @@ class ViewController: UIViewController, UIAlertViewDelegate {
             KiiSocialConnect.log(in: .Reserved1, options: nil, block: {
                 (user, provider, error) in
                 if (error != nil) {
-                    self.set(result: "KiiSocialConnect.login failed.")
+                    self.set(result: "KiiSocialConnect.login failed. " + error!.localizedDescription)
                 } else {
-                    self.set(result: "KiiSocialConnect.login succeeded.")
+                    self.set(result: "KiiSocialConnect.login succeeded. " + user!.userID!)
                 }
             })
         })
@@ -45,20 +45,20 @@ class ViewController: UIViewController, UIAlertViewDelegate {
             KiiUser.login(withWebAuth: KiiReservedProvider1.provider(), block: {
                     (user, error) in
                 if (error != nil) {
-                    self.set(result: "KiiUser.loginWithWebAuth failed.")
+                    self.set(result: "KiiUser.loginWithWebAuth failed. " + error!.localizedDescription)
                 } else {
-                    self.set(result: "KiiUser.loginWithWebAuth succeeded.")
+                    self.set(result: "KiiUser.loginWithWebAuth succeeded. " + user!.userID!)
                 }
             })
         })
-        alertC.addAction(UIAlertAction(title: "new one", style: .default) {
+        alertC.addAction(UIAlertAction(title: "KiiUser.webAuthLoginViewController", style: .default) {
             action in
             let vc = KiiUser.webAuthLoginViewController(KiiReservedProvider1.provider(), block: {
                 (user, error) in
                 if (error != nil) {
-                    self.set(result: "new one failed.")
+                    self.set(result: "KiiUser.webAuthLoginViewController failed. " + error!.localizedDescription)
                 } else {
-                    self.set(result: "new one succeeded.")
+                    self.set(result: "KiiUser.webAuthLoginViewController succeeded. " + user!.userID!)
                 }
             })
             //self.addChildViewController(vc)
@@ -77,7 +77,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         let alertV = UIAlertView(title: "test webview api", message: "select api", delegate: self, cancelButtonTitle: nil)
         alertV.addButton(withTitle: "KiiSocialConnect.login")
         alertV.addButton(withTitle: "KiiUser.loginWithWebAuth")
-        alertV.addButton(withTitle: "new one")
+        alertV.addButton(withTitle: "KiiUser.webAuthLoginViewController")
         alertV.show()
     }
 
@@ -87,9 +87,9 @@ class ViewController: UIViewController, UIAlertViewDelegate {
             KiiSocialConnect.log(in: .Reserved1, options: nil, block: {
                 (user, provider, error) in
                 if (error != nil) {
-                    self.set(result: "KiiSocialConnect.login failed.")
+                    self.set(result: "KiiSocialConnect.login failed. " + error!.localizedDescription)
                 } else {
-                    self.set(result: "KiiSocialConnect.login succeeded.")
+                    self.set(result: "KiiSocialConnect.login succeeded. " + user!.userID!)
                 }
             })
             break;
@@ -97,9 +97,9 @@ class ViewController: UIViewController, UIAlertViewDelegate {
             KiiUser.login(withWebAuth: KiiReservedProvider1.provider(), block: {
                 (user, error) in
                 if (error != nil) {
-                    self.set(result: "KiiUser.loginWithWebAuth failed.")
+                    self.set(result: "KiiUser.loginWithWebAuth failed. " + error!.localizedDescription)
                 } else {
-                    self.set(result: "KiiUser.loginWithWebAuth succeeded.")
+                    self.set(result: "KiiUser.loginWithWebAuth succeeded. " + user!.userID!)
                 }
             })
             break;
@@ -107,9 +107,9 @@ class ViewController: UIViewController, UIAlertViewDelegate {
             let vc = KiiUser.webAuthLoginViewController(KiiReservedProvider1.provider(), block: {
                 (user, error) in
                 if (error != nil) {
-                    self.set(result: "new one failed.")
+                    self.set(result: "KiiUser.webAuthLoginViewController failed. " + error!.localizedDescription)
                 } else {
-                    self.set(result: "new one succeeded.")
+                    self.set(result: "KiiUser.webAuthLoginViewController succeeded. " + user!.userID!)
                 }
             })
             self.present(vc, animated: true, completion: nil)
