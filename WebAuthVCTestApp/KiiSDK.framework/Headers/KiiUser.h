@@ -1973,15 +1973,15 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (void) loginWithWebAuth:(KiiWebAuthProvider*) provider block:(KiiUserBlock)block;
 
-/**  Get UIViewController for authenticate using webauth provider.
+/**  Get UINavigationController for authenticate using webauth provider.
 
-     UIViewController *vc = [KiiUser loginWithWebAuthViewController:[KiiOpenIDConnect provider]
-                                                              block:^(KiiUser *user, NSError *error) {
+     UINavigationController *nc = [KiiUser webAuthLoginNavigationController:[KiiOpenIDConnect provider]
+                                                                      block:^(KiiUser *user, NSError *error) {
          if(error == nil) {
              NSLog(@"Authenticated user: %@", user);
          }
      }];
-     [{instance of top view controller} presentViewController:vc animated:YES completion:nil];
+     [{instance of top view controller} presentViewController:nc animated:YES completion:nil];
 
  If successful, the user is cached inside SDK as current user and accessible
  via <[KiiUser currentUser]>.
@@ -1989,9 +1989,9 @@ NS_ASSUME_NONNULL_BEGIN
  @param provider Identity provider that support web auth integration.
  @param block The block to be called upon method completion. Must not
  be nil. See example.
- @return view controller of web auth, no return nil. Please present view controller yourself.
+ @return navigation controller of web auth, no return nil. Please present this controller yourself.
  */
-+ (UIViewController*) webAuthLoginViewController:(KiiWebAuthProvider*) provider block:(KiiUserBlock)block;
++ (UINavigationController*) webAuthLoginNavigationController:(KiiWebAuthProvider*) provider block:(KiiUserBlock)block;
 
 /** Link logged user with Identity provider through token integration. This is blocking method
 

@@ -57,13 +57,13 @@ class ModalViewController: UIViewController {
     }
 
     @IBAction func loginNewOneClicked(_sendor: Any) {
-        let vc = KiiUser.webAuthLoginViewController(KiiReservedProvider1.provider(), block: {
+        let vc = KiiUser.webAuthLoginNavigationController(KiiReservedProvider1.provider(), block: {
             (user, error) in
             var msg: String
             if (error != nil) {
-                msg = "KiiUser.webAuthLoginViewController failed: " + error!.localizedDescription
+                msg = "KiiUser.webAuthLoginNavigationController failed: " + error!.localizedDescription
             } else {
-                msg = "KiiUser.webAuthLoginViewController succeeded: " + user!.userID!
+                msg = "KiiUser.webAuthLoginNavigationController succeeded: " + user!.userID!
             }
             if let handler = self.resultHandler {
                 handler(msg)
