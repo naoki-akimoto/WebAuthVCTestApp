@@ -19,6 +19,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         self.modalTransitionStyle = .crossDissolve
         self.modalPresentationStyle = .overCurrentContext
         self.isModalInPopover = true
+        self.label!.accessibilityIdentifier = "Result-Label"
     }
 
     override func didReceiveMemoryWarning() {
