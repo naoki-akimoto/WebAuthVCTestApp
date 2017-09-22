@@ -10,8 +10,8 @@ import XCTest
 
 class WebAuthVCUITests: XCTestCase {
 
-    let TEST_USERNAME = "{your username}"
-    let TEST_PASSWORD = "{your password}"
+    let TEST_USERNAME = "{your twitter username}"
+    let TEST_PASSWORD = "{your twitter password}"
 
     override func setUp() {
         super.setUp()
@@ -159,5 +159,135 @@ class WebAuthVCUITests: XCTestCase {
         let newResult = resultLabel.label
         NSLog(newResult)
         XCTAssertTrue(newResult.starts(with: "KiiUser.webAuthLoginNavigationController failed: "))
+    }
+
+    func testSucceedLoginWithWebAuthFromAlertController() {
+        let app = XCUIApplication()
+        let webNavCancel = app.buttons["Cancel"]
+        XCTAssertFalse(webNavCancel.exists)
+        let resultLabel = app.staticTexts["Result-Label"]
+        let oldResult = resultLabel.label
+        NSLog(oldResult)
+
+        app.buttons["Open Dialog with AlertController"].tap()
+        app.buttons["KiiUser.loginWithWebAuth"].tap()
+
+        let webViewsQuery = app.webViews
+        let pageCheck = webViewsQuery.staticTexts["SPTST"]
+        do {
+            let predicate = NSPredicate(format: "exists == true")
+            let expect = expectation(for: predicate, evaluatedWith: pageCheck, handler: nil)
+            XCTAssertEqual(XCTWaiter.wait(for: [expect], timeout: 10), .completed)
+        }
+
+        webViewsQuery.textFields["Username or email"].tap()
+        webViewsQuery.textFields["Username or email"].typeText(TEST_USERNAME)
+        webViewsQuery.secureTextFields["Password"].tap()
+        webViewsQuery.secureTextFields["Password"].typeText(TEST_PASSWORD)
+        webViewsQuery.buttons["Authorize app"].tap()
+
+        do {
+            let predicate = NSPredicate(format: "label != \"" + oldResult + "\"")
+            let expect = expectation(for: predicate, evaluatedWith: resultLabel, handler: nil)
+            XCTAssertEqual(XCTWaiter.wait(for: [expect], timeout: 10), .completed)
+        }
+
+        let newResult = resultLabel.label
+        NSLog(newResult)
+        XCTAssertTrue(newResult.starts(with: "KiiUser.loginWithWebAuth succeeded. "))
+    }
+
+    func testCancelLoginWithWebAuthFromAlertController() {
+        let app = XCUIApplication()
+        let resultLabel = app.staticTexts["Result-Label"]
+        let oldResult = resultLabel.label
+        NSLog(oldResult)
+
+        app.buttons["Open Dialog with AlertController"].tap()
+        app.buttons["KiiUser.loginWithWebAuth"].tap()
+
+        let webNavCancel = app.buttons["Cancel"]
+        do {
+            let predicate = NSPredicate(format: "exists == true")
+            let expect = expectation(for: predicate, evaluatedWith: webNavCancel, handler: nil)
+            XCTAssertEqual(XCTWaiter.wait(for: [expect], timeout: 10), .completed)
+        }
+
+        webNavCancel.tap()
+
+        do {
+            let predicate = NSPredicate(format: "label != \"" + oldResult + "\"")
+            let expect = expectation(for: predicate, evaluatedWith: resultLabel, handler: nil)
+            XCTAssertEqual(XCTWaiter.wait(for: [expect], timeout: 10), .completed)
+        }
+
+        let newResult = resultLabel.label
+        NSLog(newResult)
+        XCTAssertTrue(newResult.starts(with: "KiiUser.loginWithWebAuth failed. "))
+    }
+
+    func testSucceedWebAuthLoginNCFromAlertController() {
+        let app = XCUIApplication()
+        let webNavCancel = app.buttons["Cancel"]
+        XCTAssertFalse(webNavCancel.exists)
+        let resultLabel = app.staticTexts["Result-Label"]
+        let oldResult = resultLabel.label
+        NSLog(oldResult)
+
+        app.buttons["Open Dialog with AlertController"].tap()
+        app.buttons["KiiUser.webAuthLoginNavigationController"].tap()
+
+        let webViewsQuery = app.webViews
+        let pageCheck = webViewsQuery.staticTexts["SPTST"]
+        do {
+            let predicate = NSPredicate(format: "exists == true")
+            let expect = expectation(for: predicate, evaluatedWith: pageCheck, handler: nil)
+            XCTAssertEqual(XCTWaiter.wait(for: [expect], timeout: 10), .completed)
+        }
+
+        webViewsQuery.textFields["Username or email"].tap()
+        webViewsQuery.textFields["Username or email"].typeText(TEST_USERNAME)
+        webViewsQuery.secureTextFields["Password"].tap()
+        webViewsQuery.secureTextFields["Password"].typeText(TEST_PASSWORD)
+        webViewsQuery.buttons["Authorize app"].tap()
+
+        do {
+            let predicate = NSPredicate(format: "label != \"" + oldResult + "\"")
+            let expect = expectation(for: predicate, evaluatedWith: resultLabel, handler: nil)
+            XCTAssertEqual(XCTWaiter.wait(for: [expect], timeout: 10), .completed)
+        }
+
+        let newResult = resultLabel.label
+        NSLog(newResult)
+        XCTAssertTrue(newResult.starts(with: "KiiUser.webAuthLoginNavigationController succeeded. "))
+    }
+
+    func testCancelWebAuthLoginNCFromAlertController() {
+        let app = XCUIApplication()
+        let resultLabel = app.staticTexts["Result-Label"]
+        let oldResult = resultLabel.label
+        NSLog(oldResult)
+
+        app.buttons["Open Dialog with AlertController"].tap()
+        app.buttons["KiiUser.webAuthLoginNavigationController"].tap()
+
+        let webNavCancel = app.buttons["Cancel"]
+        do {
+            let predicate = NSPredicate(format: "exists == true")
+            let expect = expectation(for: predicate, evaluatedWith: webNavCancel, handler: nil)
+            XCTAssertEqual(XCTWaiter.wait(for: [expect], timeout: 10), .completed)
+        }
+
+        webNavCancel.tap()
+
+        do {
+            let predicate = NSPredicate(format: "label != \"" + oldResult + "\"")
+            let expect = expectation(for: predicate, evaluatedWith: resultLabel, handler: nil)
+            XCTAssertEqual(XCTWaiter.wait(for: [expect], timeout: 10), .completed)
+        }
+
+        let newResult = resultLabel.label
+        NSLog(newResult)
+        XCTAssertTrue(newResult.starts(with: "KiiUser.webAuthLoginNavigationController failed. "))
     }
 }
