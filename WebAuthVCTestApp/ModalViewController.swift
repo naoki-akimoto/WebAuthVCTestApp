@@ -33,7 +33,7 @@ class ModalViewController: UIViewController {
 
     @IBAction func loginKiiSocialConnectClicked(_sendor: Any) {
         //dismiss(animated: true, completion: {
-            KiiSocialConnect.log(in: .Reserved1, options: nil, block: {
+            KiiSocialConnect.log(in: .OpenIDConnectSimple, options: nil, block: {
                 (user, provider, error) in
             })
         //})
@@ -41,7 +41,7 @@ class ModalViewController: UIViewController {
 
     @IBAction func loginKiiUserClicked(_sendor: Any) {
         //dismiss(animated: true, completion: {
-            KiiUser.login(withWebAuth: KiiReservedProvider1.provider(), block: {
+            KiiUser.login(withWebAuth: KiiOpenIDConnectProvider.provider(), block: {
                 (user, error) in
                 var msg: String
                 if (error != nil) {
@@ -57,7 +57,7 @@ class ModalViewController: UIViewController {
     }
 
     @IBAction func loginNewOneClicked(_sendor: Any) {
-        let vc = KiiUser.webAuthLoginNavigationController(KiiReservedProvider1.provider(), block: {
+        let vc = KiiUser.webAuthLoginNavigationController(KiiOpenIDConnectProvider.provider(), block: {
             (user, error) in
             var msg: String
             if (error != nil) {
