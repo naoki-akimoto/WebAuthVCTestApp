@@ -77,10 +77,3 @@ FOUNDATION_EXPORT const unsigned char KiiSDKVersionString[];
 #import <KiiSDK/KAConstants.h>
 #import <KiiSDK/KiiCallback.h>
 #import <KiiSDK/KiiReceivedMessage.h>
-#import <KiiSDK/KiiIdentityProvider.h>
-#import <KiiSDK/KiiTokenProvider.h>
-#import <KiiSDK/KiiWebAuthProvider.h>
-#import <KiiSDK/KiiCredential.h>
-#import <KiiSDK/KiiOauth1AccessToken.h>
-#import <KiiSDK/KiiOauth2AccessToken.h>
-#import <KiiSDK/KiiIdentityInfo.h>

@@ -65,14 +65,6 @@
 #import "KiiReceivedMessage.h"
 #import "KiiThingQuery.h"
 #import "KiiThingQueryResult.h"
-#import "KiiIdentityProvider.h"
-#import "KiiTokenProvider.h"
-#import "KiiWebAuthProvider.h"
-#import "KiiCredential.h"
-#import "KiiOauth1AccessToken.h"
-#import "KiiOauth2AccessToken.h"
-#import "KiiIdentityInfo.h"
-
 
 
 @class KiiUser, KiiBucket, KiiGroup;

@@ -457,6 +457,32 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (void) logIn:(KiiConnectorProvider)provider options:(nullable NSDictionary*)options block: (KiiSCNBlock) block;
 
+/** Get UINavigationController for login with specified social network.
+
+ This will initiate the login process for the given network, with or without UI handled by SDK. If you prefer to handle login UI or using provider specific SDK to obtain access token, pass required params (acces token, access token secret, open ID) according to each provider. Other than <b> kiiConnectorQQ</b>, Kii SDK can handle the UI by passing nil into the options. If the social network user has already linked with a <KiiUser>,
+ that user will be used as signed user. Otherwise, KiiCloud creates a new user and link with the specified social network account.
+ The provider should be valid <KiiConnectorProvider> values. Otherwise, an exception will be raised. <br>
+ Snippet for Login with social network without UI:<br>
+
+ UINavigationController* nc = [KiiSocialConnect logInNavigationController:kiiConnectorFacebook
+                                                                    block:^(KiiUser *user, KiiConnectorProvider provider, NSError *error) {
+     if (error == nil) {
+         // link successful. Do someting with the user.
+     } else {
+         // something went wrong.
+     }
+ }];
+ [{instance of top view controoler} presentViewController:nc animated:YES completion:nil];
+
+ @param provider One of the supported <KiiConnectorProvider> values.
+ @param block To be called upon login completion.
+ @exception NSInvalidParameterException will be thrown if block is nil.
+ @exception NSInvalidParameterException will be thrown if KiiSocialNetworkName is passed as provider.
+ @warning Dropbox, Box, Yahoo, LinkedIn, Microsoft Live, Sina Weibo can only use login with UI.
+ @return navigation controller for login, no return nil. Please present this controller yourself.
+ */
++ (UINavigationController*) logInNavigationController:(KiiConnectorProvider)provider block:(KiiSCNBlock) block;
+
 /** Link the currently logged in user with a social network
  
  This will initiate the login process for the given network, which for SSO-enabled services like Facebook/Twitter, will send the user to the Facebook/Twitter app for authentication. There must be a currently authenticated <KiiUser>. Otherwise, you can use the logIn: method to create and log in a <KiiUser> using Facebook/Twitter. The network must already be set up via <setupNetwork:withKey:andSecret:andOptions:>

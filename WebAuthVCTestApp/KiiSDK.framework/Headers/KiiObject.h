@@ -220,7 +220,7 @@ NS_ASSUME_NONNULL_BEGIN
  @note This API can not create new KiiObject on cloud when instantiated by <[KiiBucket createObjectWithID:]>, but can only update.
  If you want to create new KiiObject with it, please use <saveAllFieldsSynchronous:withError:>, <saveAllFields:withBlock:> or <saveAllFields:withDelegate:andCallback:> instead.
  */
-- (BOOL) saveSynchronous:(BOOL)forced withError:(NSError*_Nullable*_Nullable)error;
+- (BOOL) saveSynchronous:(BOOL)forced withError:(NSError*_Nullable*_Nullable)error NS_SWIFT_NAME(saveSynchronous(forced:));
 
 
 /** Asynchronously saves the latest object values to the server

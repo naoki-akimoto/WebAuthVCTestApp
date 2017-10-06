@@ -31,46 +31,35 @@ class ModalViewController: UIViewController {
         }
     }
 
-    @IBAction func loginKiiSocialConnectClicked(_sendor: Any) {
-        //dismiss(animated: true, completion: {
-            KiiSocialConnect.log(in: .Reserved1, options: nil, block: {
-                (user, provider, error) in
-            })
-        //})
-    }
-
-    @IBAction func loginKiiUserClicked(_sendor: Any) {
-        //dismiss(animated: true, completion: {
-            KiiUser.login(withWebAuth: KiiReservedProvider1.provider(), block: {
-                (user, error) in
-                var msg: String
-                if (error != nil) {
-                    msg = "KiiUser.login failed: " + error!.localizedDescription
-                } else {
-                    msg = "KiiUser.login succeeded: " + user!.userID!
-                }
-                if let handler = self.resultHandler {
-                    handler(msg)
-                }
-            })
-        //})
-    }
-
-    @IBAction func loginNewOneClicked(_sendor: Any) {
-        let vc = KiiUser.webAuthLoginNavigationController(KiiReservedProvider1.provider(), block: {
-            (user, error) in
+    @IBAction func loginClicked(_sendor: Any) {
+        KiiSocialConnect.log(in: AppDelegate.targetProvider, options: nil, block: {
+            (user, provider, error) in
             var msg: String
             if (error != nil) {
-                msg = "KiiUser.webAuthLoginNavigationController failed: " + error!.localizedDescription
+                msg = "KiiSocialConnect.login failed: " + error!.localizedDescription
             } else {
-                msg = "KiiUser.webAuthLoginNavigationController succeeded: " + user!.userID!
+                msg = "KiiSocialConnect.login succeeded: " + user!.userID!
             }
             if let handler = self.resultHandler {
                 handler(msg)
             }
         })
-        //self.addChildViewController(vc)
-        self.present(vc, animated: true, completion: {
+    }
+
+    @IBAction func loginNCClicked(_sendor: Any) {
+        let nc = KiiSocialConnect.log(inNavigationController: AppDelegate.targetProvider, block: {
+            (user, provider, error) in
+            var msg: String
+            if (error != nil) {
+                msg = "KiiSocialConnect.loginNavigationController failed: " + error!.localizedDescription
+            } else {
+                msg = "KiiSocialConnect.loginNavigationController succeeded: " + user!.userID!
+            }
+            if let handler = self.resultHandler {
+                handler(msg)
+            }
+        })
+        self.present(nc, animated: true, completion: {
         })
     }
 }
